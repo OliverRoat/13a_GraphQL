@@ -3,7 +3,7 @@ name = "13a-graphql"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Marcus",email = "marc303i@stud.kea.dk"}
+    {name = "Oliver",email = "oljo0003@stud.kea.dk"}
 ]
 readme = "README.md"
 requires-python = ">=3.11,<4"
