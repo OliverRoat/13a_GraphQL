@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from ariadne import QueryType, MutationType, SubscriptionType, make_executable_schema, gql
+from ariadne import QueryType, MutationType, make_executable_schema, gql
 from ariadne.asgi import GraphQL
 from graphql import GraphQLResolveInfo
 from ariadne.types import GraphQLError
@@ -18,7 +18,6 @@ with open("schema.graphql") as f:
 # Define types
 query = QueryType()
 mutation = MutationType()
-subscription = SubscriptionType()
 
 
 # Query resolvers
@@ -115,12 +114,10 @@ def resolve_delete_book(_, info: GraphQLResolveInfo, id):
 schema = make_executable_schema(
     type_defs,
     query,
-    mutation,
-    subscription,
+    mutation
 )
 
 # Create a GraphQL app and mount it
 graphql_app = GraphQL(schema, debug=True)
 
 router.add_route("/graphql", graphql_app)
-router.add_websocket_route("/graphql", graphql_app)

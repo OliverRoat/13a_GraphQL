@@ -1,52 +1,47 @@
 type Book {
-    id: ID!
-    title: String
-    release_year: Int
-    author_id: ID!
-    author: Author
+  id: ID!
+  title: String
+  release_year: Int
+  author_id: ID!
+  author: Author
 }
 
 type Author {
-    id: ID!
-    name: String
-    books: [Book]
+  id: ID!
+  name: String
+  books: [Book]
 }
 
 type ErrorMessage {
-    message: String,
-    error_code: Int
+  message: String
+  error_code: Int
 }
 
 type SuccessMessage {
-    message: String
+  message: String
 }
 
 type Query {
-    "Get all books"
-    books: [Book]
+  "Get all books"
+  books: [Book]
 
-    "Get a book by id"
-    book(id: ID!): Book,
+  "Get a book by id"
+  book(id: ID!): Book
 
-    "Get all authors"
-    authors: [Author]
+  "Get all authors"
+  authors: [Author]
 
-    "Get an author by id"
-    author(id: ID!): Author
+  "Get an author by id"
+  author(id: ID!): Author
 }
 
 type Mutation {
-    "Create a new book"
-    createBook( title: String!, release_year: Int, author_id: ID!): Book
+  "Create a new book"
+  createBook(title: String!, release_year: Int, author_id: ID!): Book
 
-    "Update a book by id"
-    updateBook(id: ID!, title: String, release_year: Int, author_id: ID): Book
- 
-    "Delete a book by id"
-    deleteBook(id: ID!): SuccessMessage
-}
+  "Update a book by id"
+  updateBook(id: ID!, title: String, release_year: Int, author_id: ID): Book
 
-type Subscription {
-    "Updates when a new book has been added"
-    bookAdded: Book
+  "Delete a book by id"
+  deleteBook(id: ID!): SuccessMessage
 }
